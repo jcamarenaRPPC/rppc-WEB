@@ -1,0 +1,54 @@
+.responsive {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media(min-width:450px) {
+  .responsive {
+
+    margin: auto;
+    width: 450px;
+    height: auto;
+  }
+}
+
+.shake {
+  animation-name: shake-animation;
+  animation-duration: 0.4s;
+}
+
+@keyframes shake-animation {
+  10% {
+    transform: translate3d(-8px, 0, 0);
+  }
+
+  20% {
+    transform: translate3d(8px, 0, 0);
+  }
+
+  30% {
+    transform: translate3d(-8px, 0, 0);
+  }
+  40% {
+    transform: translate3d(8px, 0, 0);
+  }
+  50% {
+    transform: translate3d(-8px, 0, 0);
+  }
+  60% {
+    transform: translate3d(8px, 0, 0);
+  }
+  70% {
+    transform: translate3d(-8px, 0, 0);
+  }
+  80% {
+    transform: translate3d(8px, 0, 0);
+  }
+  90% {
+    transform: translate3d(-8px, 0, 0);
+  }
+  100% {
+    transform: translate3d(8px, 0, 0);
+  }
+}

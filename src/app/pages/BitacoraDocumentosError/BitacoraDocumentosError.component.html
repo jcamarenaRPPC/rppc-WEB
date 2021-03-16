@@ -1,0 +1,43 @@
+<nb-card>
+  <nb-card-body>
+    <div class = "row">
+      <div class = "col">
+        <span>Fecha</span>
+        &nbsp;
+        <input nbInput placeholder="Fecha" [nbDatepicker]="datFecha" [(ngModel)]="this.Fecha" fullWidth>
+        <nb-datepicker #datFecha></nb-datepicker>
+      </div>
+    </div>
+    <div class = "row">
+      <div class = "col col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <span>No. de volante</span>
+      </div>
+    </div>
+    <div class = "row">
+      <div class = "col-sm-3 col-md-3 col-lg-3 col-xl-2">
+        <input nbInput placeholder="1" shape="semi-round" fullWidth>
+        -
+      </div>
+      <div class = "col-sm-3 col-md-3 col-lg-3 col-xl-2">
+        <input nbInput placeholder="20" shape="semi-round" fullWidth>
+        -
+      </div>
+      <div class = "col-sm-3 col-md-3 col-lg-3 col-xl-2">
+        <input nbInput placeholder="0000" shape="semi-round" fullWidth>
+      </div>
+    </div>
+    <div class = "row">
+      <div class = "col">
+        <span>Motivo de reingreso</span>
+        &nbsp;
+        <nb-select placeholder="Selecciona una opción">
+          <nb-option value="1">Documento aceptado con error</nb-option>
+          <nb-option value="2">Documento dañado</nb-option>
+        </nb-select>
+      </div>
+      <div class = "col">
+        <input type="button" nbButton value="Modificar volante" shape="semi-round" status="info" fullWidth>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>

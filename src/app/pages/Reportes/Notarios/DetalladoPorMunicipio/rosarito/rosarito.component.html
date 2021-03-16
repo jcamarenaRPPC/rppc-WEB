@@ -1,0 +1,108 @@
+<!--CRITERIOS DE BUSQQUEDA-->
+<nb-card>
+  <nb-card-body>
+    <nb-card status="info">
+      <nb-card-header style="color: white; background-color: #7e002e">
+        CRITERIOS DE BUSQUEDA
+      </nb-card-header>
+
+      <nb-card-body>
+        <br>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-1 col-lg-1 col-xl-1">
+            <span>
+            Fecha inicio
+            </span>
+          </div>
+          <div class="col-12 col-sm-12 col-md-11 col-lg-11 col-xl-11">
+            <input nbInput placeholder="Fecha inicio" [nbDatepicker]="datFecha1" [(ngModel)]="this.Fecha1">
+            <nb-datepicker #datFecha1></nb-datepicker>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-1 col-lg-1 col-xl-1">
+            <span>
+            Fecha fin
+            </span>
+          </div>
+          <div class="col-12 col-sm-12 col-md-11 col-lg-11 col-xl-11">
+            <input nbInput placeholder="Fecha fin" [nbDatepicker]="datFecha2" [(ngModel)]="this.Fecha2">
+            <nb-datepicker #datFecha2></nb-datepicker>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3">
+            <button nbButton status="basic" size="large" shape="semi-round" (click)="obtenerDatos()"
+                    style="border-color: #7e002e; border-width: revert" fullWidth>
+              Consultar
+            </button>
+          </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </nb-card-body>
+</nb-card>
+<!--GRAFICAS DE PIE-->
+<nb-card [nbSpinner]="this.spinnerLoadingGraficas" nbSpinnerStatus="info" nbSpinnerSize="large"
+         nbSpinnerMessage="Recuperando datos...">
+  <nb-card-header style="color: white; background-color: #7e002e">
+    ESTADISTICA
+  </nb-card-header>
+  <br>
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <div id="Totales" echarts [options]="this.chartDataTotales" class="demo-chart">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
+      <div id="InscripcionesEnLinea" echarts [options]="this.chartDataInscripciones" class="demo-chart">
+      </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
+      <div id="AvisosEnLinea" echarts [options]="this.chartDataAvisos" class="demo-chart">
+      </div>
+    </div>
+  </div>
+</nb-card>
+<!--GRAFICA DE BARRAS-->
+<nb-card>
+  <nb-card-header style="color: white; background-color: #7e002e">
+    GRAFICA DE BARRAS
+  </nb-card-header>
+  <br>
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <div echarts [options]="this.chartDataBarras" class="demo-chart">
+      </div>
+    </div>
+  </div>
+</nb-card>
+<!--TABLA DE DATOS-->
+<nb-card>
+  <nb-card-body>
+    <!--PESTAÑA DETALLADO POR MUNICIPIO-->
+    <nb-card [nbSpinner]="this.spinnerLoadingTabla" nbSpinnerStatus="info" nbSpinnerSize="large"
+             nbSpinnerMessage="Recuperando datos...">
+      <nb-card-header style="color: white; background-color: #7e002e">
+        <i class="fas fa-tasks"></i>
+        Detalle de Notarios de Rosarito
+      </nb-card-header>
+      <nb-card-body>
+        <ng2-smart-table [settings]="tableConfig" [source]="tableSource"></ng2-smart-table>
+      </nb-card-body>
+      <nb-card-footer>
+        <div class="row">
+          <div class="col">
+            <button nbButton status="basic" size="large" shape="semi-round" (click)="obtenerDatos()"
+                    style="border-color: #7e002e; border-width: revert" fullWidth>
+              Consultar
+            </button>
+          </div>
+        </div>
+      </nb-card-footer>
+    </nb-card>
+  </nb-card-body>
+</nb-card>

@@ -1,0 +1,83 @@
+<nb-card>
+  <nb-card-body>
+    <nb-card status="info">
+      <nb-card-header style="color: white; background-color: #7e002e">
+        CRITERIOS DE BUSQUEDA
+      </nb-card-header>
+
+      <nb-card-body>
+        <br>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-1 col-lg-1 col-xl-1">
+            <span>
+            Fecha inicio
+            </span>
+          </div>
+          <div class="col-12 col-sm-12 col-md-11 col-lg-11 col-xl-11">
+            <input nbInput placeholder="Fecha inicio" [nbDatepicker]="datFecha1" [(ngModel)]="this.Fecha1">
+            <nb-datepicker #datFecha1></nb-datepicker>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-1 col-lg-1 col-xl-1">
+            <span>
+            Fecha fin
+            </span>
+          </div>
+          <div class="col-12 col-sm-12 col-md-11 col-lg-11 col-xl-11">
+            <input nbInput placeholder="Fecha fin" [nbDatepicker]="datFecha2" [(ngModel)]="this.Fecha2">
+            <nb-datepicker #datFecha2></nb-datepicker>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3">
+            <button nbButton status="basic" size="large" shape="semi-round" (click)="obtenerDatos()" style="border-color: #7e002e; border-width: revert" fullWidth>
+              Consultar
+            </button>
+          </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+
+    <!--GRAFICA DE BARRAS-->
+    <nb-card>
+      <nb-card-header style="color: white; background-color: #7e002e">
+        GRAFICA DE BARRAS
+      </nb-card-header>
+      <br>
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div echarts [options]="this.chartDataBarras" class="demo-chart">
+          </div>
+        </div>
+      </div>
+    </nb-card>
+
+    <nb-card>
+      <nb-card-body>
+        <!--PESTAÑA DE MEXICALI-->
+        <nb-card [nbSpinner]="this.spinnerLoading" nbSpinnerStatus="info" nbSpinnerSize="large"
+                 nbSpinnerMessage="Recuperando datos...">
+          <nb-card-header style="color: white; background-color: #7e002e">
+            <i class="fas fa-tasks"></i>
+            Carga de analistas Tecate
+          </nb-card-header>
+          <nb-card-body>
+            <ng2-smart-table [settings]="tableConfig" [source]="tableSource"></ng2-smart-table>
+          </nb-card-body>
+          <nb-card-footer>
+            <div class="row">
+              <div class="col">
+                <button nbButton status="basic" size="large" shape="semi-round" (click)="obtenerDatos()"
+                        style="border-color: #7e002e; border-width: revert" fullWidth>
+                  Consultar
+                </button>
+              </div>
+            </div>
+          </nb-card-footer>
+        </nb-card>
+      </nb-card-body>
+    </nb-card>
+  </nb-card-body>
+</nb-card>

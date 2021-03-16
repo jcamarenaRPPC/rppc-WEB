@@ -1,0 +1,14 @@
+.responsive {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media(min-width:450px) {
+  .responsive {
+    margin: auto;
+    width: 450px;
+    height: auto;
+  }
+}
+

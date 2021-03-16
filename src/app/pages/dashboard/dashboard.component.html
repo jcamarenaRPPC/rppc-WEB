@@ -1,0 +1,148 @@
+<nb-card>
+  <nb-card-header style="color: white; background-color: #7e002e">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-2">
+        PERIODO CONSULTADO
+      </div>
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-10" style="text-align: right;">
+        <nb-toggle style="color: white;" status="control" labelPosition="left" [(ngModel)]="this.isChecked" (checkedChange)="this.obtenerDatosTiempoReal(this.isChecked? false : true)">
+          Actualización en tiempo real (5s)
+        </nb-toggle>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-12" style="text-align: right">
+        <button nbButton nbTooltip="Descargar" nbTooltipIcon="download-outline" [nbTooltipPlacement]="'bottom'" status="basic" size="medium" shape="semi-round" (click)="this.exportToPDF()" style="border-color: #7e002e; border-width: revert; width: 150px">
+          <span class="mr-2">
+            <i class="far fa-file-pdf" style="font-size: 28px">
+            </i>
+          </span>
+          PDF
+        </button>
+      </div>
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3">
+        <span>
+          Inicio
+        </span>
+        <input nbInput placeholder="Fecha inicio" [nbDatepicker]="datFechaInicio" [(ngModel)]="this.FechaInicio" (ngModelChange)="obtenerDatos()" fullWidth>
+        <nb-datepicker #datFechaInicio></nb-datepicker>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3">
+        <span>
+          Fin
+        </span>
+        <input nbInput placeholder="Fecha fin" [nbDatepicker]="datFechaFin" [(ngModel)]="this.FechaFin" (ngModelChange)="obtenerDatos()" fullWidth>
+        <nb-datepicker #datFechaFin></nb-datepicker>
+      </div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2">
+        <button nbButton status="basic" shape="semi-round" (click)="this.setFechaDiario()" style="border-color: #7e002e; border-width: revert" fullWidth>
+          Diario
+        </button>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2">
+        <button nbButton status="basic" shape="semi-round" (click)="this.setFecha1Semana()" style="border-color: #7e002e; border-width: revert" fullWidth>
+          1 semana
+        </button>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2">
+        <button nbButton status="basic" shape="semi-round" (click)="this.setFecha15Dias()" style="border-color: #7e002e; border-width: revert" fullWidth>
+          15 días
+        </button>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2">
+        <button nbButton status="basic" shape="semi-round" (click)="this.setFecha1Mes()" style="border-color: #7e002e; border-width: revert" fullWidth>
+          1 mes
+        </button>
+      </div>
+    </div>
+    <div class="row" >
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2">
+        <button nbButton status="basic" shape="semi-round" (click)="this.setFechaTrimestral()" style="border-color: #7e002e; border-width: revert" fullWidth>
+          <span>
+            Trimestral
+          </span>
+        </button>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2">
+        <button nbButton status="basic" shape="semi-round" (click)="this.setFechaSemestral()" style="border-color: #7e002e; border-width: revert" fullWidth>
+          Semestral
+        </button>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-2">
+        <button nbButton status="basic" shape="semi-round" (click)="this.setFechaAnual()" style="border-color: #7e002e; border-width: revert" fullWidth>
+          Anual
+        </button>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
+
+<nb-card style="height: 64vh">
+  <nb-card-body>
+    <!--CARGA DE ANALISTAS-->
+    <nb-card [nbSpinner]="this.spinnerLoadingAnalistas"  nbSpinnerStatus="info" nbSpinnerSize="large" nbSpinnerMessage="Recuperando datos...">
+      <nb-card-header style="color: white; background-color: #7e002e">
+        CARGA DE ANALISTAS
+      </nb-card-header>
+      <br>
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
+          <div id="caAsignadoParaAnalisis" echarts [options]="this.chartDataAsignadosParaAnalisis" class="demo-chart">
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
+          <div id="caEnAnalisis" echarts [options]="this.chartDataEnAnalisis" class="demo-chart">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
+          <div id="caAnalizados" echarts [options]="this.chartDataAnalizados" class="demo-chart">
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
+          <div id="caEstatal" echarts [options]="this.chartDataEstatalAnalistas" class="demo-chart">
+          </div>
+        </div>
+      </div>
+    </nb-card>
+
+    <!--CARGA DE REGISTRADORES-->
+    <nb-card [nbSpinner]="this.spinnerLoadingRegistradores"  nbSpinnerStatus="info" nbSpinnerSize="large" nbSpinnerMessage="Recuperando datos...">
+      <nb-card-header style="color: white; background-color: #7e002e">
+        CARGA DE REGISTRADORES
+      </nb-card-header>
+      <br>
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
+          <div id="crPendientesDeFirma" echarts [options]="this.chartDataPendientesDeFirma" class="demo-chart">
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
+          <div id="crFirmados" echarts [options]="this.chartDataFirmados" class="demo-chart">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
+          <div id="crTotal" echarts [options]="this.chartDataTotal" class="demo-chart">
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
+          <div id="crEstatal" echarts [options]="this.chartDataEstatalRegistradores" class="demo-chart">
+          </div>
+        </div>
+      </div>
+    </nb-card>
+  </nb-card-body>
+</nb-card>

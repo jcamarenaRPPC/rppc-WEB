@@ -1,0 +1,64 @@
+<nb-layout>
+  <nb-layout-column>
+    <!--TABLA PARA COMPONENTE DE IMAGEN-->
+    <img src="./assets/images/GBC.png" height="300" width="500" class="responsive"/>
+
+    <!--TABLA PARA EL COMPONENTE DE CREDENCIALES-->
+    <div class="row">
+      <div class="m-auto col-sm-12 col-md-6 col-lg-6 col-xl-4">
+        <br>
+        <nb-card [nbSpinner]="this.spinnerLoading" nbSpinnerStatus="info" nbSpinnerSize="large" nbSpinnerMessage="Validando credenciales...">
+          <nb-card-header class="text-center" style="color: white; background-color: #7e002e">
+            <span>
+               CREDENCIALES DE USUARIO
+            </span>
+          </nb-card-header>
+          <nb-card-body>
+            <div class="row">
+              <div class="m-auto col">
+                <span for="tbxUsuario">
+                  Usuario
+                </span>
+                <input id="tbxUsuario" shape="semi-round"
+                       [ngClass]="{'shake': this.showAnimationUsuario, 'dialog-class': true}"
+                       [status]="this.Usuario? 'basic':'danger'" [(ngModel)]="this.Usuario" placeholder="Usuario"
+                       oninput="this.value = this.value.toUpperCase()" nbInput fullWidth autofocus>
+                <br>
+                <div class="row">
+                  <div class="col">
+                  <span for="tbxContrasena">
+                    Contraseña
+                  </span>
+                    <input [type]="getInputType()"
+                           [ngClass]="{'shake': this.showAnimationContrasena, 'dialog-class': true}"
+                           [status]="this.Contrasena? 'basic':'danger'" shape="semi-round" id="tbxContrasena"
+                           [(ngModel)]="this.Contrasena"
+                           placeholder="Contraseña" (keyup.enter)="ValidarUsuario()" nbInput fullWidth>
+                  </div>
+                  <div class="col-auto mt-auto">
+                    <button nbSuffix nbButton ghost (click)="toggleShowPassword()">
+                      <nb-icon [icon]="showPassword ? 'eye-outline' : 'eye-off-2-outline'"
+                               [attr.aria-label]="showPassword ? 'hide password' : 'show password'" pack="eva">
+                      </nb-icon>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nb-card-body>
+          <nb-card-footer>
+            <div class="row">
+              <div class="col">
+                <button fullWidth status="basic" (click)="ValidarUsuario()" nbButton shape="semi-round"
+                        style="border-color: #7e002e; border-width: revert; height: 50px; ">
+                  Entrar &nbsp;
+                  <i class="fas fa-sign-in-alt" style="font-size: 28px"></i>
+                </button>
+              </div>
+            </div>
+          </nb-card-footer>
+        </nb-card>
+      </div>
+    </div>
+  </nb-layout-column>
+</nb-layout>

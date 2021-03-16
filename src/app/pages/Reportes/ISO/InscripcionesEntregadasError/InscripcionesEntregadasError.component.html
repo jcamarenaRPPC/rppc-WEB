@@ -1,0 +1,99 @@
+<nb-card>
+  <nb-card-header style="color: white; background-color: #7e002e">
+    CRITERIOS DE BUSQUEDA
+  </nb-card-header>
+  <nb-card-body>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-1 col-xl-1">
+            <span>
+            Año
+            </span>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-11 col-xl-11">
+        <input nbInput placeholder="YYYY"  [(ngModel)]="this.anio"
+               [ngClass] ="{'shake': animacionAnio, 'dialog-class': true}"
+               [status]="this.anio ? 'basic' : 'danger'" maxlength="4" fullWidth>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-1 col-xl-1">
+            <span>
+            Mes inicio
+            </span>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-11 col-xl-11">
+        <nb-select placeholder="Selecciona un mes" [(ngModel)]="this.mesInicio" fullWidth>
+          <nb-option value="01">Enero</nb-option>
+          <nb-option value="02">Febrero</nb-option>
+          <nb-option value="03">Marzo</nb-option>
+          <nb-option value="04">Abril</nb-option>
+          <nb-option value="05">Mayo</nb-option>
+          <nb-option value="06">Junio</nb-option>
+          <nb-option value="07">Julio</nb-option>
+          <nb-option value="08">Agosto</nb-option>
+          <nb-option value="09">Septiembre</nb-option>
+          <nb-option value="10">Octubre</nb-option>
+          <nb-option value="11">Noviembre</nb-option>
+          <nb-option value="12">Diciembre</nb-option>
+        </nb-select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-1 col-xl-1">
+            <span>
+            Mes fin
+            </span>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-11 col-xl-11">
+        <nb-select placeholder="Selecciona un mes" [(ngModel)]="this.mesFin" fullWidth>
+          <nb-option value="01">Enero</nb-option>
+          <nb-option value="02">Febrero</nb-option>
+          <nb-option value="03">Marzo</nb-option>
+          <nb-option value="04">Abril</nb-option>
+          <nb-option value="05">Mayo</nb-option>
+          <nb-option value="06">Junio</nb-option>
+          <nb-option value="07">Julio</nb-option>
+          <nb-option value="08">Agosto</nb-option>
+          <nb-option value="09">Septiembre</nb-option>
+          <nb-option value="10">Octubre</nb-option>
+          <nb-option value="11">Noviembre</nb-option>
+          <nb-option value="12">Diciembre</nb-option>
+        </nb-select>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
+        <button nbButton status="basic" size="large" shape="semi-round" (click)="obtenerDatos()" style="border-color: #7e002e; border-width: revert"
+                [nbSpinner]="this.spinnerLoading"  nbSpinnerStatus="info" nbSpinnerSize="large" fullWidth>
+          Consultar
+        </button>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
+
+<nb-card>
+  <nb-card-body>
+    <nb-card  [nbSpinner]="this.spinnerLoading"  nbSpinnerStatus="info" nbSpinnerSize="large" nbSpinnerMessage="Recuperando datos...">
+      <nb-card-header style="color: white; background-color: #7e002e">
+        <i class="fas fa-tasks"></i>
+        Inscripciones
+      </nb-card-header >
+      <nb-card-body>
+        <ng2-smart-table [settings]="tableConfig" [source]="tableSource"></ng2-smart-table>
+      </nb-card-body>
+      <nb-card-footer>
+        <div class="row">
+          <div class="col">
+            <button nbButton status="basic" size="large" shape="semi-round"
+                    (click)="obtenerDatos()" style="border-color: #7e002e; border-width: revert" fullWidth>
+              Consultar
+            </button>
+          </div>
+        </div>
+      </nb-card-footer>
+    </nb-card>
+  </nb-card-body>
+</nb-card>

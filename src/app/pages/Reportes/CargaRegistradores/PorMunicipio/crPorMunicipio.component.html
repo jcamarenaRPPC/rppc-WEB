@@ -1,0 +1,164 @@
+<nb-card>
+  <nb-card-body>
+    <nb-card status="info">
+      <nb-card-header style="color: white; background-color: #7e002e">
+        CRITERIOS DE BUSQUEDA
+      </nb-card-header>
+
+      <nb-card-body>
+        <br>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-1 col-lg-1 col-xl-1">
+            <span>
+            Fecha inicio
+            </span>
+          </div>
+          <div class="col-12 col-sm-12 col-md-11 col-lg-11 col-xl-11">
+            <input nbInput placeholder="Fecha inicio" [nbDatepicker]="datFecha1" [(ngModel)]="this.Fecha1">
+            <nb-datepicker #datFecha1></nb-datepicker>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-1 col-lg-1 col-xl-1">
+            <span>
+            Fecha fin
+            </span>
+          </div>
+          <div class="col-12 col-sm-12 col-md-11 col-lg-11 col-xl-11">
+            <input nbInput placeholder="Fecha fin" [nbDatepicker]="datFecha2" [(ngModel)]="this.Fecha2">
+            <nb-datepicker #datFecha2></nb-datepicker>
+          </div>
+        </div>
+
+        <!--
+                <br>
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-11 col-lg-11 col-xl-3">
+                    <button nbButton status="basic" size="large" shape="semi-round" (click)="obtenerDatosMexicali()"
+                            style="border-color: #7e002e; border-width: revert" fullWidth>
+                      Consultar
+                    </button>
+                  </div>
+                </div>
+        -->
+      </nb-card-body>
+    </nb-card>
+
+    <nb-card>
+      <nb-card-body>
+        <nb-tabset>
+          <!--PESTAÑA DE MEXICALI-->
+          <nb-tab tabTitle="MEXICALI" tabIcon="person-outline" responsive>
+            <nb-card  [nbSpinner]="this.spinnerLoadingMexicali"  nbSpinnerStatus="info" nbSpinnerSize="large" nbSpinnerMessage="Recuperando datos...">
+              <nb-card-header style="color: white; background-color: #7e002e">
+                <i class="fas fa-tasks"></i>
+                Carga de registradores
+              </nb-card-header >
+              <nb-card-body>
+                <ng2-smart-table [settings]="tableConfigMexicali" [source]="tableSourceMexicali"></ng2-smart-table>
+              </nb-card-body>
+              <nb-card-footer>
+                <div class="row">
+                  <div class="col">
+                    <button nbButton status="basic" size="large" shape="semi-round"
+                            (click)="obtenerDatosMexicali()" style="border-color: #7e002e; border-width: revert" fullWidth>
+                      Consultar
+                    </button>
+                  </div>
+                </div>
+              </nb-card-footer>
+            </nb-card>
+          </nb-tab>
+          <!--PESTAÑA DE TIJUANA-->
+          <nb-tab tabTitle="TIJUANA" tabIcon="person-outline" responsive>
+            <nb-card  [nbSpinner]="this.spinnerLoadingTijuana"  nbSpinnerStatus="info" nbSpinnerSize="large" nbSpinnerMessage="Recuperando datos...">
+              <nb-card-header style="color: white; background-color: #7e002e">
+                <i class="fas fa-tasks"></i>
+                Carga de registradores
+              </nb-card-header >
+              <nb-card-body>
+                <ng2-smart-table [settings]="tableConfigTijuana" [source]="tableSourceTijuana"></ng2-smart-table>
+              </nb-card-body>
+              <nb-card-footer>
+                <div class="row">
+                  <div class="col">
+                    <button nbButton status="basic" size="large" shape="semi-round"
+                            (click)="obtenerDatosTijuana()" style="border-color: #7e002e; border-width: revert" fullWidth>
+                      Consultar
+                    </button>
+                  </div>
+                </div>
+              </nb-card-footer>
+            </nb-card>
+          </nb-tab>
+          <!--PESTAÑA DE ENSENADA-->
+          <nb-tab tabTitle="ENSENADA" tabIcon="person-outline" responsive>
+            <nb-card  [nbSpinner]="this.spinnerLoadingEnsenada"  nbSpinnerStatus="info" nbSpinnerSize="large" nbSpinnerMessage="Recuperando datos...">
+              <nb-card-header style="color: white; background-color: #7e002e">
+                <i class="fas fa-tasks"></i>
+                Carga de registradores
+              </nb-card-header >
+              <nb-card-body>
+                <ng2-smart-table [settings]="tableConfigEnsenada" [source]="tableSourceEnsenada"></ng2-smart-table>
+              </nb-card-body>
+              <nb-card-footer>
+                <div class="row">
+                  <div class="col">
+                    <button nbButton status="basic" size="large" shape="semi-round"
+                            (click)="obtenerDatosEnsenada()" style="border-color: #7e002e; border-width: revert" fullWidth>
+                      Consultar
+                    </button>
+                  </div>
+                </div>
+              </nb-card-footer>
+            </nb-card>
+          </nb-tab>
+          <!--PESTAÑA DE TECATE-->
+          <nb-tab tabTitle="TECATE" tabIcon="person-outline" responsive>
+            <nb-card  [nbSpinner]="this.spinnerLoadingTecate"  nbSpinnerStatus="info" nbSpinnerSize="large" nbSpinnerMessage="Recuperando datos...">
+              <nb-card-header style="color: white; background-color: #7e002e">
+                <i class="fas fa-tasks"></i>
+                Carga de registradores
+              </nb-card-header >
+              <nb-card-body>
+                <ng2-smart-table [settings]="tableConfigTecate" [source]="tableSourceTecate"></ng2-smart-table>
+              </nb-card-body>
+              <nb-card-footer>
+                <div class="row">
+                  <div class="col">
+                    <button nbButton status="basic" size="large" shape="semi-round"
+                            (click)="obtenerDatosTecate()" style="border-color: #7e002e; border-width: revert" fullWidth>
+                      Consultar
+                    </button>
+                  </div>
+                </div>
+              </nb-card-footer>
+            </nb-card>
+          </nb-tab>
+          <!--PESTAÑA DE ROSARITO-->
+          <nb-tab tabTitle="ROSARITO" tabIcon="person-outline" responsive>
+            <nb-card  [nbSpinner]="this.spinnerLoadingRosarito"  nbSpinnerStatus="info" nbSpinnerSize="large" nbSpinnerMessage="Recuperando datos...">
+              <nb-card-header style="color: white; background-color: #7e002e">
+                <i class="fas fa-tasks"></i>
+                Carga de registradores
+              </nb-card-header >
+              <nb-card-body>
+                <ng2-smart-table [settings]="tableConfigRosarito" [source]="tableSourceRosarito"></ng2-smart-table>
+              </nb-card-body>
+              <nb-card-footer>
+                <div class="row">
+                  <div class="col">
+                    <button nbButton status="basic" size="large" shape="semi-round"
+                            (click)="obtenerDatosRosarito()" style="border-color: #7e002e; border-width: revert" fullWidth>
+                      Consultar
+                    </button>
+                  </div>
+                </div>
+              </nb-card-footer>
+            </nb-card>
+          </nb-tab>
+        </nb-tabset>
+      </nb-card-body>
+    </nb-card>
+  </nb-card-body>
+</nb-card>
