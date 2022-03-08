@@ -33,7 +33,6 @@ import {AuthInterceptor} from './service/auth.interceptor';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-
     ThemeModule.forRoot(),
 
     NbSidebarModule.forRoot(),

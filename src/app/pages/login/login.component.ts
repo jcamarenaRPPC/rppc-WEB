@@ -32,12 +32,12 @@ export class LoginComponent implements OnInit {
     this.showPassword = !this.showPassword;
   }
 
-  // Asignar datos para inicio de sesión rápido.
-  Usuario: string = 'JCAMARENA';
-  Contrasena: string = 'k@MARENA05';
+  // Asignar datos para inicio de sesión.
+  Usuario: string = '';
+  Contrasena: string = '';
 
 /*
-  Usuario: string = '';
+  Usuario: string = '';d
   Contrasena: string = '';
 */
 
@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
 
     // Si la condición se cumple, termina la validación de datos y termina.
     if (bolBanderaError) {
-      // Mostrar alerta.
+      // Configurar y mostrar alerta para campos obligatorios.
       this.alerta.show('', 'Capturar campos obligatorios', { limit: 1, position: NbGlobalLogicalPosition.TOP_END,
         status: 'danger', preventDuplicates: true, icon: {icon: 'exclamation-triangle', pack: 'font-awesome'}});
       return;
@@ -100,9 +100,10 @@ export class LoginComponent implements OnInit {
 
         // Si la respuesta es invalida se regresa un arreglo vacío.
         if (Object.keys(lstUsuarios).length === 0) {
-          // Iniciar animacion de carga.
+          // Terminar animacion de carga.
           this.spinnerLoading = false;
 
+          // Mostrar ventana.
           this.alerta.show('', 'Usuario no válido', { limit: 1, position: NbGlobalLogicalPosition.TOP_END,
             status: 'danger', preventDuplicates: true, icon: {icon: 'exclamation-triangle', pack: 'font-awesome'}});
           return;
@@ -116,10 +117,8 @@ export class LoginComponent implements OnInit {
         UsuarioLocalStorage.OFICINA_ID = this.objServicio.objUsuarioEnSistema.OFICINA_ID;
         UsuarioLocalStorage.DESCR = this.objServicio.objUsuarioEnSistema.DESCR;
 
-        // Activar la sessión de usuario.
         this.objSesion.activarSesion(UsuarioLocalStorage);
 
-        // Validar desde que municipio consultan.
         if (this.objServicio.objUsuarioEnSistema.EMPLEADO_ID !== null) {
           // Cargar la página de inicial para cada usuario.
           switch (this.objServicio.objUsuarioEnSistema.DESCR) {
@@ -127,21 +126,24 @@ export class LoginComponent implements OnInit {
             case 'CONSULTA':
               this.router.navigate(['pages/dashboard']);
               break;
+            case 'REGISTRADOR':
+              this.router.navigate(['pages/indicadores/reporte']);
+              break;
             default:
               this.router.navigate(['pages/dashboard']);
           }
-          // Iniciar animacion de carga.
+          // Terminar animacion de carga.
           this.spinnerLoading = false;
         } else {
+          // Terminar animacion de carga.
+          this.spinnerLoading = false;
+
           // Mostrar ventana.
           this.alerta.show('', 'Usuario incorrecto', { limit: 1, position: NbGlobalLogicalPosition.TOP_END,
             status: 'danger', preventDuplicates: true, icon: {icon: 'exclamation-triangle', pack: 'font-awesome'}});
-
-          // Detener animacion de carga.
-          this.spinnerLoading = false;
         }
       }, error => {
-        // Detener animacion de carga.
+        // Terminar animacion de carga.
         this.spinnerLoading = false;
 
         // Mostrar ventana.

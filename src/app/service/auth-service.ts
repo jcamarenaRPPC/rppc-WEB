@@ -7,8 +7,8 @@ export class AuthService {
   constructor() {
   }
 
+  // Activar la sesion que será visible para toda la aplicación.
   activarSesion(objUsuarioRPP: UsuariosRPP) {
-    // Guardar las variables que se pueden usar en toda la aplicación.
     localStorage.setItem('UsuarioID', objUsuarioRPP.EMPLEADO_ID);
     localStorage.setItem('Usuario', objUsuarioRPP.LoginUSR);
     localStorage.setItem('Password', objUsuarioRPP.Password);
@@ -17,7 +17,6 @@ export class AuthService {
   }
 
   logout() {
-    // Borrar las variables que se pueden usar en toda la aplicación.
     localStorage.removeItem('UsuarioID');
     localStorage.removeItem('Usuario');
     localStorage.removeItem('Password');

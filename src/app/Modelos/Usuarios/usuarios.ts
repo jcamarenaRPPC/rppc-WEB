@@ -1,8 +1,7 @@
 export class Usuarios {
     ID: string = '';
-    NombreCompleto: string = '';
-    TipoDeUsuario: string = '';
-    Usuario: string = '';
-    Contrasena: string = '';
-    TokenDeAcceso: string = '';
+    Anio: string = '';
+    Mes: string = '';
+    Total1: string = '';
+    Total2: string = '';
 }

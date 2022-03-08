@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {
-  MENU_ADMINISTRACION,
+  MENU_ADMINISTRACION, MENU_REGISTRADOR,
   MENU_REPORTESENS,
   MENU_REPORTESMXL,
   MENU_REPORTESROS,
@@ -32,6 +32,10 @@ export class PagesComponent implements OnInit {
   }
 
   ngOnInit() {
+/*
+    const objUsuarioToken: Usuarios = new Usuarios();
+    objUsuarioToken.TokenDeAcceso = localStorage.getItem('TokenDeAcceso');
+*/
     // Crear objeto de usuario.
     const objUsuarioToken: UsuariosRPP = new UsuariosRPP();
     objUsuarioToken.LoginUSR = localStorage.getItem('Usuario');
@@ -50,9 +54,7 @@ export class PagesComponent implements OnInit {
       // Asignar usuario.
       this.objServicio.objUsuarioEnSistema = lstUsuarios[0];
 
-      // Declarar variable para controlar la oficina.
       let intOficinaID: any;
-
       // Cargar el menu de opciones dependiendo del tipo de area.
       switch (this.objServicio.objUsuarioEnSistema.DESCR) {
         case 'ADMINISTRADOR':
@@ -81,12 +83,15 @@ export class PagesComponent implements OnInit {
             this.menu = MENU_REPORTESROS;
           }
           break;
+        case 'REGISTRADOR':
+          // CARGAR MENU DE REGISTRADOR.
+          this.menu = MENU_REGISTRADOR;
+          break;
         default:
-          // Construir un menú vacío, el cual no pintara nada en la vista.
           this.menu = [];
       }
     }, error => {
-        // Error.
+        // Mostrar ventana.
       });
   }
 }

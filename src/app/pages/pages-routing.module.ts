@@ -39,6 +39,8 @@ import {TijuanaComponent} from './Reportes/Notarios/DetalladoPorMunicipio/tijuan
 import {EnsenadaComponent} from './Reportes/Notarios/DetalladoPorMunicipio/ensenada/ensenada.component';
 import {TecateComponent} from './Reportes/Notarios/DetalladoPorMunicipio/tecate/tecate.component';
 import {RosaritoComponent} from './Reportes/Notarios/DetalladoPorMunicipio/rosarito/rosarito.component';
+import {ReporteIndicadoresComponent} from './indicadores/reporte-indicadores/reporte-indicadores.component';
+import {CapturaIndicadoresComponent} from './indicadores/captura-indicadores/captura-indicadores.component';
 
 const routes: Routes = [{
   path: '',
@@ -231,7 +233,17 @@ const routes: Routes = [{
       component: DetalladoPorEstadoComponent,
     },
     {
-      // Cuando el path viene vacio, redireccionar al dashboard.
+      canActivate: [AuthGuard],
+      path: 'indicadores/captura',
+      component: CapturaIndicadoresComponent,
+    },
+    {
+      canActivate: [AuthGuard],
+      path: 'indicadores/reporte',
+      component: ReporteIndicadoresComponent,
+    },
+    {
+      // Cuando el path viene vacio, redireccionar a cualquiera de las de arriba.
       path: '',
       redirectTo: 'dashboard',
       pathMatch: 'full',

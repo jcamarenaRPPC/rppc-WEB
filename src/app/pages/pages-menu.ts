@@ -149,12 +149,12 @@ export const MENU_ADMINISTRACION: NbMenuItem[] = [
           },
         ],
       },
+      {
+        title: 'Nuevo reporte ISO',
+        icon: {icon: 'database', pack: 'font-awesome'},
+        link: '/pages/reportes/ISO/',
+      },
     ],
-  },
-  {
-    title: 'Bitacora Dtos con error',
-    icon: {icon: 'database', pack: 'font-awesome'},
-    link: '/pages/BitacoraDocumentosError',
   },
   {
     title: 'Notarios',
@@ -197,7 +197,33 @@ export const MENU_ADMINISTRACION: NbMenuItem[] = [
         icon: {icon: 'database', pack: 'font-awesome'},
         link: '/pages/reportes/Notarios/DetalladoPorEstado',
       },
+      {
+        title: 'Nuevo reporte notarios',
+        icon: {icon: 'database', pack: 'font-awesome'},
+        link: '/pages/reportes/Notarios/',
+      },
     ],
+  },
+  /*
+    {
+      title: 'Bitacora Dtos con error',
+      icon: {icon: 'database', pack: 'font-awesome'},
+      link: '/pages/BitacoraDocumentosError',
+    },
+  */
+  {
+    title: 'INDICADORES',
+    group: true,
+  },
+  {
+    title: 'Reporte de Indicadores',
+    icon: {icon: 'chart-bar', pack: 'font-awesome'},
+    link: '/pages/indicadores/reporte',
+  },
+  {
+    title: 'Captura de Indicadores',
+    icon: {icon: 'keyboard', pack: 'font-awesome'},
+    link: '/pages/indicadores/captura',
   },
 ];
 
@@ -309,6 +335,20 @@ export const MENU_REPORTESMXL: NbMenuItem[] = [
       },
     ],
   },
+  {
+    title: 'INDICADORES',
+    group: true,
+  },
+  {
+    title: 'Reporte de Indicadores',
+    icon: {icon: 'chart-bar', pack: 'font-awesome'},
+    link: '/pages/indicadores/reporte',
+  },
+  {
+    title: 'Captura de Indicadores',
+    icon: {icon: 'keyboard', pack: 'font-awesome'},
+    link: '/pages/indicadores/captura',
+  },
 ];
 export const MENU_REPORTESTIJ: NbMenuItem[] = [
   {
@@ -372,6 +412,20 @@ export const MENU_REPORTESTIJ: NbMenuItem[] = [
         link: '/pages/reportes/CargaRegistradores/Municipios/Tijuana',
       },
     ],
+  },
+  {
+    title: 'INDICADORES',
+    group: true,
+  },
+  {
+    title: 'Reporte de Indicadores',
+    icon: {icon: 'chart-bar', pack: 'font-awesome'},
+    link: '/pages/indicadores/reporte',
+  },
+  {
+    title: 'Captura de Indicadores',
+    icon: {icon: 'keyboard', pack: 'font-awesome'},
+    link: '/pages/indicadores/captura',
   },
 ];
 export const MENU_REPORTESENS: NbMenuItem[] = [
@@ -437,6 +491,20 @@ export const MENU_REPORTESENS: NbMenuItem[] = [
       },
     ],
   },
+  {
+    title: 'INDICADORES',
+    group: true,
+  },
+  {
+    title: 'Reporte de Indicadores',
+    icon: {icon: 'chart-bar', pack: 'font-awesome'},
+    link: '/pages/indicadores/reporte',
+  },
+  {
+    title: 'Captura de Indicadores',
+    icon: {icon: 'keyboard', pack: 'font-awesome'},
+    link: '/pages/indicadores/captura',
+  },
 ];
 export const MENU_REPORTESTEC: NbMenuItem[] = [
   {
@@ -501,6 +569,20 @@ export const MENU_REPORTESTEC: NbMenuItem[] = [
       },
     ],
   },
+  {
+    title: 'INDICADORES',
+    group: true,
+  },
+  {
+    title: 'Reporte de Indicadores',
+    icon: {icon: 'chart-bar', pack: 'font-awesome'},
+    link: '/pages/indicadores/reporte',
+  },
+  {
+    title: 'Captura de Indicadores',
+    icon: {icon: 'keyboard', pack: 'font-awesome'},
+    link: '/pages/indicadores/captura',
+  },
 ];
 export const MENU_REPORTESROS: NbMenuItem[] = [
   {
@@ -564,5 +646,42 @@ export const MENU_REPORTESROS: NbMenuItem[] = [
         link: '/pages/reportes/CargaRegistradores/Municipios/Rosarito',
       },
     ],
+  },
+  {
+    title: 'INDICADORES',
+    group: true,
+  },
+  {
+    title: 'Reporte de Indicadores',
+    icon: {icon: 'chart-bar', pack: 'font-awesome'},
+    link: '/pages/indicadores/reporte',
+  },
+  {
+    title: 'Captura de Indicadores',
+    icon: {icon: 'keyboard', pack: 'font-awesome'},
+    link: '/pages/indicadores/captura',
+  },
+];
+export const MENU_REGISTRADOR: NbMenuItem[] = [
+  // {
+  //   title: 'INICIO - DASHBOARD',
+  //   icon: 'home-outline',
+  //   link: '/pages/dashboard',
+  //   home: true,
+  // },
+  {
+    title: 'INDICADORES',
+    group: true,
+  },
+  {
+    title: 'Reporte de Indicadores',
+    icon: {icon: 'chart-bar', pack: 'font-awesome'},
+    link: '/pages/indicadores/reporte',
+    home: true,
+  },
+  {
+    title: 'Captura de Indicadores',
+    icon: {icon: 'keyboard', pack: 'font-awesome'},
+    link: '/pages/indicadores/captura',
   },
 ];

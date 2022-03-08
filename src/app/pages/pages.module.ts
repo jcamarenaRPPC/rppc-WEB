@@ -5,7 +5,7 @@ import {
   NbInputModule,
   NbMenuModule, NbSelectModule,
   NbSpinnerModule,
-  NbTabsetModule, NbTooltipModule,
+  NbTabsetModule, NbToggleModule, NbTooltipModule,
 } from '@nebular/theme';
 
 import { ThemeModule } from '../@theme/theme.module';
@@ -34,6 +34,8 @@ import { CrEnsenadaComponent } from './Reportes/CargaRegistradores/Municipios/En
 import { CrTecateComponent } from './Reportes/CargaRegistradores/Municipios/Tecate/crTecate.component';
 import { CrRosaritoComponent } from './Reportes/CargaRegistradores/Municipios/Rosarito/crRosarito.component';
 import { BitacoraDocumentosErrorComponent } from './BitacoraDocumentosError/BitacoraDocumentosError.component';
+import {CapturaIndicadoresComponent} from './indicadores/captura-indicadores/captura-indicadores.component';
+import {ReporteIndicadoresComponent} from './indicadores/reporte-indicadores/reporte-indicadores.component';
 
 @NgModule({
   imports: [
@@ -53,6 +55,7 @@ import { BitacoraDocumentosErrorComponent } from './BitacoraDocumentosError/Bita
     PieChartModule,
     NgxEchartsModule,
     NbSelectModule,
+    NbToggleModule,
   ],
   declarations: [
     PagesComponent,
@@ -74,6 +77,8 @@ import { BitacoraDocumentosErrorComponent } from './BitacoraDocumentosError/Bita
     CrTecateComponent,
     CrRosaritoComponent,
     BitacoraDocumentosErrorComponent,
+    CapturaIndicadoresComponent,
+    ReporteIndicadoresComponent,
   ],
 })
 export class PagesModule {

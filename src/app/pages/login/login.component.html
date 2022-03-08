@@ -7,7 +7,7 @@
     <div class="row">
       <div class="m-auto col-sm-12 col-md-6 col-lg-6 col-xl-4">
         <br>
-        <nb-card [nbSpinner]="this.spinnerLoading" nbSpinnerStatus="info" nbSpinnerSize="large" nbSpinnerMessage="Validando credenciales...">
+        <nb-card>
           <nb-card-header class="text-center" style="color: white; background-color: #7e002e">
             <span>
                CREDENCIALES DE USUARIO
@@ -22,7 +22,7 @@
                 <input id="tbxUsuario" shape="semi-round"
                        [ngClass]="{'shake': this.showAnimationUsuario, 'dialog-class': true}"
                        [status]="this.Usuario? 'basic':'danger'" [(ngModel)]="this.Usuario" placeholder="Usuario"
-                       oninput="this.value = this.value.toUpperCase()" nbInput fullWidth autofocus>
+                       nbInput fullWidth autofocus oninput="this.value = this.value.toUpperCase()">
                 <br>
                 <div class="row">
                   <div class="col">
@@ -49,7 +49,8 @@
           <nb-card-footer>
             <div class="row">
               <div class="col">
-                <button fullWidth status="basic" (click)="ValidarUsuario()" nbButton shape="semi-round"
+                <button [nbSpinner]="this.spinnerLoading" nbSpinnerStatus="info" nbSpinnerSize="large" fullWidth status="basic"
+                        (click)="ValidarUsuario()" nbButton shape="semi-round"
                         style="border-color: #7e002e; border-width: revert; height: 50px; ">
                   Entrar &nbsp;
                   <i class="fas fa-sign-in-alt" style="font-size: 28px"></i>
