@@ -204,6 +204,43 @@ export const MENU_ADMINISTRACION: NbMenuItem[] = [
       },
     ],
   },
+  {
+    title: 'Carga de Registradores',
+    icon: {icon: 'database', pack: 'font-awesome'},
+    expanded: false,
+    children: [
+      {
+        title: 'Mexicali',
+        icon: {icon: 'database', pack: 'font-awesome'},
+        link: '/pages/reportes/CargaRegistradores/Municipios/Mexicali',
+      },
+      {
+        title: 'Tijuana',
+        icon: {icon: 'database', pack: 'font-awesome'},
+        link: '/pages/reportes/CargaRegistradores/Municipios/Tijuana',
+      },
+      {
+        title: 'Ensenada',
+        icon: {icon: 'database', pack: 'font-awesome'},
+        link: '/pages/reportes/CargaRegistradores/Municipios/Ensenada',
+      },
+      {
+        title: 'Tecate',
+        icon: {icon: 'database', pack: 'font-awesome'},
+        link: '/pages/reportes/CargaRegistradores/Municipios/Tecate',
+      },
+      {
+        title: 'Rosarito',
+        icon: {icon: 'database', pack: 'font-awesome'},
+        link: '/pages/reportes/CargaRegistradores/Municipios/Rosarito',
+      },
+      {
+        title: 'Totalizado',
+        icon: {icon: 'database', pack: 'font-awesome'},
+        link: '/pages/reportes/CargaRegistradores/Totalizado',
+      },
+    ],
+  },
   /*
     {
       title: 'Bitacora Dtos con error',

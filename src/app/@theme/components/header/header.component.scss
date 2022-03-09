@@ -3,8 +3,8 @@
 @import '../../styles/themes';
 
 // Cambiar el color de letra del menu de usuario.
-:host /deep/ nb-user.initials, :host /deep/ nb-user .user-name,
-:host /deep/ nb-user .user-title, :host /deep/ nb-user .user-picture.initials {
+:host ::ng-deep nb-user.initials, :host ::ng-deep nb-user .user-name,
+:host ::ng-deep nb-user .user-title, :host ::ng-deep nb-user .user-picture.initials {
   color: white !important;
 }
 

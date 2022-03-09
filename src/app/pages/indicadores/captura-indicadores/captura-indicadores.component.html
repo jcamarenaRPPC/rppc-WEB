@@ -1,0 +1,147 @@
+<nb-card>
+  <nb-card-header style="color: white; background-color: #7e002e">
+    Captura de Indicadores
+  </nb-card-header>
+  <nb-card-body [nbSpinner]="this.spinnerLoading"  nbSpinnerStatus="info" nbSpinnerSize="large" nbSpinnerMessage="Recuperando datos...">
+    <div *ngIf="this.esAdmin">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
+          <label>Selecciona un indicador</label>
+          <nb-select [(ngModel)]="indicadorSelected" (selectedChange)="obtenerDatosIndicador()">
+            <nb-option [value]="0">Información Registral Via Oficios</nb-option>
+            <nb-option [value]="1">Capacitación</nb-option>
+            <nb-option [value]="2">Indice de Satisfacción al Usuario</nb-option>
+            <nb-option [value]="3">Actas Constitutivas Civiles</nb-option>
+            <nb-option [value]="4">Porcentaje de Certificados Entregados con Error</nb-option>
+            <nb-option [value]="5">Porcentaje de Inscripciones Entregados con Error</nb-option>
+            <nb-option [value]="6">Certificado de No Propiedad</nb-option>
+            <nb-option [value]="7">Segundos Análisis en Inscripciones</nb-option>
+            <nb-option [value]="8">Segundos Análisis en Certificaciones</nb-option>
+          </nb-select>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="bloque col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
+          <label>Municipio</label>
+          <nb-select [(ngModel)]="oficinaSelected" (selectedChange)="obtenerDatosIndicador()">
+            <nb-option [value]="0">Mexicali</nb-option>
+            <nb-option [value]="1">Tijuana</nb-option>
+            <nb-option [value]="2">Ensenada</nb-option>
+            <nb-option [value]="3">Tecate</nb-option>
+            <nb-option [value]="4">Rosarito</nb-option>
+          </nb-select>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="!this.esAdmin">
+      <div class="bloque col-12 col-sm-12 col-md-12">
+        <label>Selecciona un indicador</label>
+        <nb-select id="indicador" [(ngModel)]="indicadorSelected" (selectedChange)="obtenerDatosIndicador()">
+          <nb-option [value]="0">Información Registral Via Oficios</nb-option>
+          <nb-option [value]="1">Capacitación</nb-option>
+          <nb-option [value]="2">Indice de Satisfacción al Usuario</nb-option>
+          <nb-option [value]="3">Actas Constitutivas Civiles</nb-option>
+          <nb-option [value]="4">Porcentaje de Certificados Entregados con Error</nb-option>
+          <nb-option [value]="5">Porcentaje de Inscripciones Entregados con Error</nb-option>
+          <nb-option [value]="6">Certificado de No Propiedad</nb-option>
+          <nb-option [value]="7">Segundos Análisis en Inscripciones</nb-option>
+          <nb-option [value]="8">Segundos Análisis en Certificaciones</nb-option>
+        </nb-select>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12">
+        <button nbButton status="basic" size="medium" shape="semi-round" (click)="showModal(content)" style="border-color: #7e002e; border-width: revert">
+          <i class = "material-icons" style="padding-right: inherit">add_circle</i>Agregar nuevo registro
+        </button>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col">
+        <ng2-smart-table [settings]="tablaPruebaConfig" [source]="tableSource" (createConfirm)="agregarRow($event)" (deleteConfirm)="borrarRow($event)" (editConfirm)="editarRow($event)" ></ng2-smart-table>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">{{items[indicadorSelected].name}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row" [hidden]="!camposVacios" style="justify-content: center" >
+      <strong style="color: red">Capturar campos vacios</strong>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-1 col-xl-1">
+            <span>
+            Año
+            </span>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-11 col-xl-11" >
+        <input nbInput ngxNumbersOnly placeholder="Ej. {{this.anio}}" [(ngModel)]="this.anioInput" fullWidth [ngClass] ="{'shake': animacionAnio, 'dialog-class': true}"
+               [status]="this.anioStatus" maxlength="4" >
+      </div>
+    </div>
+    <br>
+    <div class="row align-items-center">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-1 col-xl-1">
+            <span>
+            Mes
+            </span>
+      </div>
+      <div class="col-12
+       col-sm-12 col-md-12 col-lg-11 col-xl-11">
+        <select class="nebular" [(ngModel)]="this.mesInput"  [ngClass] ="{'shake': animacionAnio, 'dialog-class': true}">
+          <option [value]="'1'" selected>Enero</option>
+          <option [value]="'2'">Febrero</option>
+          <option [value]="'3'">Marzo</option>
+          <option [value]="'4'">Abril</option>
+          <option [value]="'5'">Mayo</option>
+          <option [value]="'6'">Junio</option>
+          <option [value]="'7'">Julio</option>
+          <option [value]="'8'">Agosto</option>
+          <option [value]="'9'">Septiembre</option>
+          <option [value]="'10'">Octubre</option>
+          <option [value]="'11'">Noviembre</option>
+          <option [value]="'12'">Diciembre</option>
+        </select>
+      </div>
+    </div>
+    <br>
+    <div class="row align-items-center">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+            <span>
+           {{this.txtCampo1}}
+            </span>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8" >
+        <input nbInput fullWidth ngxNumbersOnly [ngClass] ="{'shake': animacionAnio, 'dialog-class': true}" [(ngModel)]="this.total1Input"
+               [status]="this.total1Status"/>
+      </div>
+    </div>
+    <br>
+
+    <div class="row align-items-center">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+            <span>
+              {{this.txtCampo2}}
+            </span>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8" >
+        <input nbInput fullWidth ngxNumbersOnly [ngClass] ="{'shake': animacionAnio, 'dialog-class': true}" [(ngModel)]="this.total2Input"
+               [status]="this.total2Status"/>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss()">Cancelar</button>
+    <button type="button" class="btn btn-success" (click)="crearRow()" [nbSpinner]="this.spinnerLoading"  nbSpinnerStatus="info" nbSpinnerSize="large">Crear</button>
+  </div>
+</ng-template>

@@ -1,0 +1,67 @@
+.shake {
+  animation-name: shake-animation;
+  animation-duration: 0.3s;
+}
+
+div.bloque label, nb-select {
+  display: block;
+}
+
+// Para el select del modal, que al usar el nb-select
+// su lista se ve fuera del modal
+select.nebular {
+  border-radius: 0.25rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  padding: 0.4375rem 1rem;
+  background-color: #f7f9fc;
+  border-color: #e4e9f2;
+  color: #222b45;
+  width: 100%;
+}
+
+select.nebular:hover {
+  background-color: #edf1f7;
+  border-color: #e4e9f2;
+}
+
+div.modal-header {
+  background-color: #7e002e;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+nb-alert {
+  z-index: 9999;
+  color: #7e002e;
+}
+h4.modal-title {
+  color: white;
+}
+@keyframes shake-animation {
+  10%, 90% {
+    transform: translate3d(-0.5px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-3px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(3px, 0, 0);
+  }
+}
+/* Para cambiar color de boton */
+/*
+:host /deep/ ng2-smart-table th.ng2-smart-actions-title-add a { background-color: #7e002e; }
+:host /deep/ ng2-smart-table th.ng2-smart-actions-title-add a:hover {
+
+*/
+:host ::ng-deep ng2-smart-table th.ng2-smart-actions-title-add a { background-color: #7e002e; }
+:host ::ng-deep ng2-smart-table th.ng2-smart-actions-title-add a:hover {
+  background-color: #7e002e;
+}

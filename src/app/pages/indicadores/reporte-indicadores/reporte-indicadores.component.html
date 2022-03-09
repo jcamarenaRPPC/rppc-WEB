@@ -1,0 +1,265 @@
+<nb-card>
+  <nb-card-header style="color: white; background-color: #7e002e">
+    <div class="row align-items-center">
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-2">
+        CRITERIOS DE BUSQUEDA
+      </div>
+<!--      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-10" style="text-align: right;">-->
+<!--        <nb-toggle style="color: white;" status="control" labelPosition="left" [(ngModel)]="this.isChecked" (checkedChange)="this.obtenerDatosTiempoReal(this.isChecked? false : true)">-->
+<!--          Actualización en tiempo real (5s)-->
+<!--        </nb-toggle>-->
+<!--      </div>-->
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-10" style="text-align: right">
+        <button class="mb-1" nbTooltip="Descargar" nbTooltipIcon="download-outline" style="width: 150px" nbButton status="success" size="giant" shape="semi-round" [disabled]="this.habilitarBotonCSV1"
+                (click)="downloadCSV(this.tableSource1, 'Concentrado1')">
+          <i class="fas fa-file-csv" style="font-size: 28px"></i>
+
+          <span class="ml-2">
+                CSV
+              </span>
+        </button>
+      </div>
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="row align-items-center">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-1 col-xl-1">
+            <span>
+            Año
+            </span>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-11 col-xl-11">
+        <input nbInput placeholder="YYYY"  [(ngModel)]="this.anio"
+               [ngClass] ="{'shake': animacionAnio, 'dialog-class': true}"
+               [status]="this.anio ? 'basic' : 'danger'" maxlength="4" fullWidth>
+      </div>
+    </div>
+
+    <!--    <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-1 col-xl-1">
+                <span>
+                Mes inicio
+                </span>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-11 col-xl-11">
+            <nb-select placeholder="Selecciona un mes" [(ngModel)]="this.mesInicio" fullWidth>
+              <nb-option value="01">Enero</nb-option>
+              <nb-option value="02">Febrero</nb-option>
+              <nb-option value="03">Marzo</nb-option>
+              <nb-option value="04">Abril</nb-option>
+              <nb-option value="05">Mayo</nb-option>
+              <nb-option value="06">Junio</nb-option>
+              <nb-option value="07">Julio</nb-option>
+              <nb-option value="08">Agosto</nb-option>
+              <nb-option value="09">Septiembre</nb-option>
+              <nb-option value="10">Octubre</nb-option>
+              <nb-option value="11">Noviembre</nb-option>
+              <nb-option value="12">Diciembre</nb-option>
+            </nb-select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-1 col-xl-1">
+                <span>
+                Mes fin
+                </span>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-11 col-xl-11">
+            <nb-select placeholder="Selecciona un mes" [(ngModel)]="this.mesFin" fullWidth>
+              <nb-option value="01">Enero</nb-option>
+              <nb-option value="02">Febrero</nb-option>
+              <nb-option value="03">Marzo</nb-option>
+              <nb-option value="04">Abril</nb-option>
+              <nb-option value="05">Mayo</nb-option>
+              <nb-option value="06">Junio</nb-option>
+              <nb-option value="07">Julio</nb-option>
+              <nb-option value="08">Agosto</nb-option>
+              <nb-option value="09">Septiembre</nb-option>
+              <nb-option value="10">Octubre</nb-option>
+              <nb-option value="11">Noviembre</nb-option>
+              <nb-option value="12">Diciembre</nb-option>
+            </nb-select>
+          </div>
+        </div>-->
+    <br>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
+        <button nbButton status="basic" size="large" shape="semi-round" (click)="obtenerDatos()" style="border-color: #7e002e; border-width: revert"
+                [nbSpinner]="this.spinnerLoading"  nbSpinnerStatus="info" nbSpinnerSize="large" fullWidth>
+          Consultar
+        </button>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
+
+<nb-card>
+  <nb-card-header style="color: white; background-color: #7e002e">
+    <i class="fas fa-tasks"></i>
+    Indicadores
+  </nb-card-header >
+  <nb-card-body [nbSpinner]="this.spinnerLoading"  nbSpinnerStatus="info" nbSpinnerSize="large" nbSpinnerMessage="Recuperando datos...">
+    <nb-card>
+      <nb-card-header style="color: white; background-color: #7e002e">
+        Información Registral Via Oficios
+      </nb-card-header >
+      <nb-card-body>
+        <ng2-smart-table [settings]="tableConfig1" [source]="tableSource1"></ng2-smart-table>
+      </nb-card-body>
+      <!-- <nb-card-footer>
+         <div class="row">
+           <div class="col">
+             <button nbButton status="basic" size="large" shape="semi-round"
+                     (click)="obtenerDatos()" style="border-color: #7e002e; border-width: revert" fullWidth>
+               Consultar
+             </button>
+           </div>
+         </div>
+       </nb-card-footer>-->
+    </nb-card>
+    <nb-card>
+      <nb-card-header style="color: white; background-color: #7e002e">
+        Capacitación
+      </nb-card-header >
+      <nb-card-body>
+        <ng2-smart-table [settings]="tableConfig2" [source]="tableSource2"></ng2-smart-table>
+      </nb-card-body>
+      <!--<nb-card-footer>
+        <div class="row">
+          <div class="col">
+            <button nbButton status="basic" size="large" shape="semi-round"
+                    (click)="obtenerDatos()" style="border-color: #7e002e; border-width: revert" fullWidth>
+              Consultar
+            </button>
+          </div>
+        </div>
+      </nb-card-footer>-->
+    </nb-card>
+    <nb-card>
+      <nb-card-header style="color: white; background-color: #7e002e">
+        Indice de Satisfacción al Usuario
+      </nb-card-header >
+      <nb-card-body>
+        <ng2-smart-table [settings]="tableConfig3" [source]="tableSource3"></ng2-smart-table>
+      </nb-card-body>
+      <!--<nb-card-footer>
+        <div class="row">
+          <div class="col">
+            <button nbButton status="basic" size="large" shape="semi-round"
+                    (click)="obtenerDatos()" style="border-color: #7e002e; border-width: revert" fullWidth>
+              Consultar
+            </button>
+          </div>
+        </div>
+      </nb-card-footer>-->
+    </nb-card>
+    <nb-card>
+      <nb-card-header style="color: white; background-color: #7e002e">
+        Actas Constitutivas Civiles
+      </nb-card-header>
+      <nb-card-body>
+        <ng2-smart-table [settings]="tableConfig4" [source]="tableSource4"></ng2-smart-table>
+      </nb-card-body>
+      <!--<nb-card-footer>
+        <div class="row">
+          <div class="col">
+            <button nbButton status="basic" size="large" shape="semi-round"
+                    (click)="obtenerDatos()" style="border-color: #7e002e; border-width: revert" fullWidth>
+              Consultar
+            </button>
+          </div>
+        </div>
+      </nb-card-footer>-->
+    </nb-card>
+    <nb-card>
+      <nb-card-header style="color: white; background-color: #7e002e">
+        Porcentaje de Certificados Entregados con Error
+      </nb-card-header>
+      <nb-card-body>
+        <ng2-smart-table [settings]="tableConfig5" [source]="tableSource5"></ng2-smart-table>
+      </nb-card-body>
+      <!--<nb-card-footer>
+        <div class="row">
+          <div class="col">
+            <button nbButton status="basic" size="large" shape="semi-round"
+                    (click)="obtenerDatos()" style="border-color: #7e002e; border-width: revert" fullWidth>
+              Consultar
+            </button>
+          </div>
+        </div>
+      </nb-card-footer>-->
+    </nb-card>
+    <nb-card>
+      <nb-card-header style="color: white; background-color: #7e002e">
+        Porcentaje de Inscripciones Entregadas con Error
+      </nb-card-header>
+      <nb-card-body>
+        <ng2-smart-table [settings]="tableConfig6" [source]="tableSource6"></ng2-smart-table>
+      </nb-card-body>
+      <!--<nb-card-footer>
+        <div class="row">
+          <div class="col">
+            <button nbButton status="basic" size="large" shape="semi-round"
+                    (click)="obtenerDatos()" style="border-color: #7e002e; border-width: revert" fullWidth>
+              Consultar
+            </button>
+          </div>
+        </div>
+      </nb-card-footer>-->
+    </nb-card>
+    <nb-card>
+      <nb-card-header style="color: white; background-color: #7e002e">
+        Certificado de No Propiedad
+      </nb-card-header>
+      <nb-card-body>
+        <ng2-smart-table [settings]="tableConfig7" [source]="tableSource7"></ng2-smart-table>
+      </nb-card-body>
+      <!--<nb-card-footer>
+        <div class="row">
+          <div class="col">
+            <button nbButton status="basic" size="large" shape="semi-round"
+                    (click)="obtenerDatos()" style="border-color: #7e002e; border-width: revert" fullWidth>
+              Consultar
+            </button>
+          </div>
+        </div>
+      </nb-card-footer>-->
+    </nb-card>
+    <nb-card>
+      <nb-card-header style="color: white; background-color: #7e002e">
+        Segundos Análisis en Inscripciones
+      </nb-card-header>
+      <nb-card-body>
+        <ng2-smart-table [settings]="tableConfig8" [source]="tableSource8"></ng2-smart-table>
+      </nb-card-body>
+      <!--<nb-card-footer>
+        <div class="row">
+          <div class="col">
+            <button nbButton status="basic" size="large" shape="semi-round"
+                    (click)="obtenerDatos()" style="border-color: #7e002e; border-width: revert" fullWidth>
+              Consultar
+            </button>
+          </div>
+        </div>
+      </nb-card-footer>-->
+    </nb-card>
+    <nb-card>
+      <nb-card-header style="color: white; background-color: #7e002e">
+        Segundos Análisis en Certificaciones
+      </nb-card-header>
+      <nb-card-body>
+        <ng2-smart-table [settings]="tableConfig9" [source]="tableSource9"></ng2-smart-table>
+      </nb-card-body>
+      <!--<nb-card-footer>
+        <div class="row">
+          <div class="col">
+            <button nbButton status="basic" size="large" shape="semi-round"
+                    (click)="obtenerDatos()" style="border-color: #7e002e; border-width: revert" fullWidth>
+              Consultar
+            </button>
+          </div>
+        </div>
+      </nb-card-footer>-->
+    </nb-card>
+  </nb-card-body>
+</nb-card>

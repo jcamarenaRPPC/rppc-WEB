@@ -152,7 +152,7 @@ export class CrMexicaliComponent implements OnInit {
       });
     }, error => {
       // Desactivar la animación.
-      this.spinnerLoading = false;
+      this.spinnerLoading = true;
 
       // Mostrar ventana.
       this.alerta.danger(error, 'Alerta');
